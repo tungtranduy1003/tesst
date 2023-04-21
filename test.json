@@ -1,0 +1,399 @@
+{
+  "openapi" : "3.0.0",
+  "servers" : [ {
+    "description" : "SwaggerHub API Auto Mocking",
+    "url" : "https://virtserver.swaggerhub.com/TUNGTRANDUY1003/app/1.0.0"
+  } ],
+  "info" : {
+    "version" : "1.0.0",
+    "title" : "API Mock",
+    "description" : "API Mock Server For Mcrew Work"
+  },
+  "paths" : {
+    "/api/mock/appointments/{tutorId}" : {
+      "get" : {
+        "tags" : [ "Appointment" ],
+        "parameters" : [ {
+          "name" : "tutorId",
+          "in" : "path",
+          "required" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "summary" : "get appointments by tutor id",
+        "description" : "get appointments by tutor id",
+        "responses" : {
+          "200" : {
+            "description" : "OK",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Appoinment"
+                }
+              }
+            }
+          },
+          "401" : {
+            "description" : "Unauthorized",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "object",
+                  "properties" : {
+                    "message" : {
+                      "type" : "string"
+                    }
+                  },
+                  "example" : {
+                    "message" : "Unauthorized"
+                  }
+                }
+              }
+            }
+          },
+          "500" : {
+            "description" : "Internal Server Error",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "object",
+                  "properties" : {
+                    "message" : {
+                      "type" : "string"
+                    }
+                  },
+                  "example" : {
+                    "message" : "server error"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "security" : [ {
+          "BearerAuthentication" : [ ]
+        } ]
+      }
+    },
+    "/api/mock/appointments" : {
+      "post" : {
+        "tags" : [ "Appointment" ],
+        "summary" : "Add new records",
+        "description" : "Add new records",
+        "requestBody" : {
+          "description" : "request body",
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "type" : "object",
+                "properties" : {
+                  "reservabledatesId" : {
+                    "type" : "string"
+                  },
+                  "tutorId" : {
+                    "type" : "string"
+                  },
+                  "studentId" : {
+                    "type" : "string"
+                  }
+                }
+              },
+              "example" : {
+                "reservabledatesId" : "641ab0395c30e59aff4b003d",
+                "tutorId" : "633bd6e4be771d1589e6085e",
+                "studentId" : "6348f39f5019fc6f8a71ddaa"
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "OK",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "object",
+                  "properties" : {
+                    "success" : {
+                      "type" : "boolean"
+                    },
+                    "message" : {
+                      "type" : "string"
+                    }
+                  },
+                  "example" : {
+                    "success" : true,
+                    "message" : "succesful created data"
+                  }
+                }
+              }
+            }
+          },
+          "401" : {
+            "description" : "Unauthorized",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "object",
+                  "properties" : {
+                    "message" : {
+                      "type" : "string"
+                    }
+                  },
+                  "example" : {
+                    "message" : "Unauthorized"
+                  }
+                }
+              }
+            }
+          },
+          "500" : {
+            "description" : "Internal Server Error",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "object",
+                  "properties" : {
+                    "message" : {
+                      "type" : "string"
+                    }
+                  },
+                  "example" : {
+                    "message" : "server error"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "security" : [ {
+          "BearerAuthentication" : [ ]
+        } ]
+      }
+    },
+    "/api/mock/appointments/{appoinmentId}" : {
+      "put" : {
+        "tags" : [ "Appointment" ],
+        "parameters" : [ {
+          "name" : "appoinmentId",
+          "in" : "path",
+          "required" : true,
+          "schema" : {
+            "type" : "integer"
+          }
+        } ],
+        "summary" : "Updating records",
+        "description" : "Updating records",
+        "requestBody" : {
+          "description" : "request body",
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "type" : "object",
+                "properties" : {
+                  "isTeacherConfirm" : {
+                    "type" : "boolean"
+                  },
+                  "isStudentAttendence" : {
+                    "type" : "boolean"
+                  },
+                  "isTeacherAttendence" : {
+                    "type" : "boolean"
+                  },
+                  "isClassCompleted" : {
+                    "type" : "boolean"
+                  },
+                  "isCancel" : {
+                    "type" : "boolean"
+                  },
+                  "cancelReason" : {
+                    "type" : "string"
+                  }
+                }
+              },
+              "example" : {
+                "isTeacherConfirm" : true,
+                "isStudentAttendence" : false,
+                "isTeacherAttendence" : false,
+                "isClassCompleted" : false,
+                "isCancel" : true,
+                "cancelReason" : "di choi voi nguoi yeu"
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "OK",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "object",
+                  "properties" : {
+                    "success" : {
+                      "type" : "boolean"
+                    },
+                    "message" : {
+                      "type" : "string"
+                    }
+                  },
+                  "example" : {
+                    "success" : true,
+                    "message" : "succesful updated data"
+                  }
+                }
+              }
+            }
+          },
+          "401" : {
+            "description" : "Unauthorized",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "object",
+                  "properties" : {
+                    "message" : {
+                      "type" : "string"
+                    }
+                  },
+                  "example" : {
+                    "message" : "Unauthorized"
+                  }
+                }
+              }
+            }
+          },
+          "500" : {
+            "description" : "Internal Server Error",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "object",
+                  "properties" : {
+                    "message" : {
+                      "type" : "string"
+                    }
+                  },
+                  "example" : {
+                    "message" : "server error"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "security" : [ {
+          "BearerAuthentication" : [ ]
+        } ]
+      }
+    }
+  },
+  "components" : {
+    "schemas" : {
+      "Appoinment" : {
+        "type" : "object",
+        "properties" : {
+          "success" : {
+            "type" : "boolean"
+          },
+          "message" : {
+            "type" : "string"
+          },
+          "data" : {
+            "type" : "array",
+            "items" : {
+              "type" : "object",
+              "description" : "employee object",
+              "properties" : {
+                "id" : {
+                  "type" : "string"
+                },
+                "reservabledatesId" : {
+                  "type" : "string"
+                },
+                "tutorId" : {
+                  "type" : "string"
+                },
+                "studentId" : {
+                  "type" : "string"
+                },
+                "isTeacherConfirm" : {
+                  "type" : "boolean"
+                },
+                "isStudentAttendence" : {
+                  "type" : "boolean"
+                },
+                "isTeacherAttendence" : {
+                  "type" : "boolean"
+                },
+                "isClassCompleted" : {
+                  "type" : "boolean"
+                },
+                "isCancel" : {
+                  "type" : "boolean"
+                },
+                "cancelReason" : {
+                  "type" : "string",
+                  "nullable" : true
+                }
+              }
+            }
+          }
+        },
+        "example" : {
+          "success" : true,
+          "message" : "Request successful",
+          "data" : [ {
+            "id" : "641ab0395c30e59aff4b001a",
+            "reservabledatesId" : "641ab0395c30e59aff4b003d",
+            "tutorId" : "633bd6e4be771d1589e6085e",
+            "studentId" : "6348f39f5019fc6f8a71ddaa",
+            "isTeacherConfirm" : false,
+            "isStudentAttendence" : false,
+            "isTeacherAttendence" : false,
+            "isClassCompleted" : false,
+            "isCancel" : false,
+            "cancelReason" : null
+          }, {
+            "id" : "641ab0395c30e59aff4b001b",
+            "reservabledatesId" : "641ab0395c30e59aff4b003d",
+            "tutorId" : "633bd6e4be771d1589e6085e",
+            "studentId" : "6348f39f5019fc6f8a71ddaa",
+            "isTeacherConfirm" : false,
+            "isStudentAttendence" : false,
+            "isTeacherAttendence" : false,
+            "isClassCompleted" : false,
+            "isCancel" : false,
+            "cancelReason" : null
+          }, {
+            "id" : "641ab0395c30e59aff4b001c",
+            "reservabledatesId" : "641ab0395c30e59aff4b0037",
+            "tutorId" : "633bd6e4be771d1589e6085e",
+            "studentId" : "6348f39f5019fc6f8a71ddaa",
+            "isTeacherConfirm" : false,
+            "isStudentAttendence" : false,
+            "isTeacherAttendence" : false,
+            "isClassCompleted" : false,
+            "isCancel" : false,
+            "cancelReason" : null
+          } ]
+        }
+      }
+    },
+    "securitySchemes" : {
+      "BearerAuthentication" : {
+        "type" : "http",
+        "scheme" : "bearer",
+        "bearerFormat" : "JWT"
+      }
+    }
+  },
+  "security" : [ {
+    "BearerAuthentication" : [ ]
+  } ],
+  "tags" : [ {
+    "name" : "Appointment",
+    "description" : "Appointment"
+  } ]
+}
